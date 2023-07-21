@@ -1,0 +1,43 @@
+<!-- search.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Search</title>
+</head>
+<body>
+    <h1>Employee Search</h1>
+    {% if session['username'] %}
+        <form action="/search" method="post">
+            <label for="employee_id">Employee ID:</label>
+            <input type="text" id="employee_id" name="employee_id" required>
+            <input type="submit" value="Fetch">
+        </form>
+
+        {% if employee_data %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Full Name</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employee_data %}
+                    <tr>
+                        <td>{{ employee['employee_id'] }}</td>
+                        <td>{{ employee['full_name'] }}</td>
+                        <td>{{ employee['salary'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        
+        <a href="/logout">Logout</a>
+    {% else %}
+        <p>You are not logged in. Please log in to access the search page.</p>
+        <a href="/login">Login</a>
+    {% endif %}
+</body>
+</html>

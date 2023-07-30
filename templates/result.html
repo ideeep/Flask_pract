@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reviews</title>
+</head>
+<body>
+    <h1>Reviews</h1>
+    <table>
+        <tr>
+            <th>Reviewer Name</th>
+            <th>Location</th>
+            <th>Title</th>
+            <th>Rate</th>
+            <th>Description</th>
+        </tr>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review['Reviewer Name'] }}</td>
+            <td>{{ review['Location'] }}</td>
+            <td>{{ review['Title'] }}</td>
+            <td>{{ review['Rate'] }}</td>
+            <td>{{ review['Description'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
